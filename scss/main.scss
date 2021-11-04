@@ -17,6 +17,8 @@ body {
     height: 120px;
     border-radius: 10px;
     margin: 10px;
+    display: flex;
+    align-items: self-end;
 }
 
 #mainwrap {
@@ -28,6 +30,7 @@ body {
     .list {
         li {
             list-style: none;
+            cursor: pointer;
         }
     }
 }
