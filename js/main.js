@@ -3,6 +3,7 @@ window.onload = function () {
     myList();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
+    document.getElementById("saveBut").addEventListener("click", saveIt);
 };
 
 let list = [];
@@ -21,6 +22,7 @@ function createHTML() {
     headwrap.appendChild(button);
     let saveBut = document.createElement("button");
     saveBut.innerHTML = "Save";
+    saveBut.id = "saveBut";
     headwrap.appendChild(saveBut);
 }
 
@@ -42,11 +44,16 @@ function adinList() {
 
 function myList() {
     let mylistUl = document.getElementById("myList");
-    new taskList("Train");
-    new taskList("Make food");
-    new taskList("Have a walk");
-    new taskList("Code");
 
+    if ("tasks" in localStorage) {
+        let listIt = localStorage.getItem("tasks");
+        list = JSON.parse(listIt);
+    } else {
+        new taskList("Train");
+        new taskList("Make food");
+        new taskList("Have a walk");
+        new taskList("Code");
+    }
     for (let i = 0; i < list.length; i++) {
         let a = document.createElement("li");
         a.innerHTML = list[i].task;
@@ -70,4 +77,9 @@ class taskList {
         this.task = task;
         list.push(this);
     }
+}
+
+function saveIt() {
+    let task = JSON.stringify(list);
+    localStorage.setItem("tasks", task);
 }
