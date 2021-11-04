@@ -32,5 +32,11 @@ body {
             list-style: none;
             cursor: pointer;
         }
+        li:checked {
+            text-transform: underline;
+        }
+        li:hover {
+            background-color: deeppink;
+        }
     }
 }
