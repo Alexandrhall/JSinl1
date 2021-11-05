@@ -17,8 +17,28 @@ body {
     height: 120px;
     border-radius: 10px;
     margin: 10px;
-    display: flex;
-    align-items: self-end;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    h2 {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        justify-self: center;
+        font-size: 2rem;
+    }
+    #inp {
+        grid-row-start: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        font-size: 1.2rem;
+    }
+    #button {
+        grid-row-start: 2;
+        grid-column-start: 3;
+    }
+    #saveBut {
+        grid-row-start: 2;
+        grid-column-start: 4;
+    }
 }
 
 #mainwrap {
