@@ -46,25 +46,36 @@ body {
     background-color: rgba(169, 169, 169, 0.5);
     border-radius: 10px;
     height: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
 
     .list {
+        margin: 0 auto;
+        padding: 10px 0px 10px 0px;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+
         li {
             list-style: none;
             cursor: pointer;
+            padding: 5px;
+            .close {
+                float: right;
+                font-size: 1.2rem;
+            }
+            .close:hover {
+                background-color: salmon;
+                border-radius: 30%;
+            }
+        }
+        li:hover {
+            background-color: wheat;
+            border-radius: 10px;
         }
         li.checked {
             text-decoration: line-through;
-        }
-        li:hover {
-            background-color: deeppink;
-        }
-        .checkbox:checked {
-            width: 300px;
-            background-color: red;
-        }
-        .checkbox {
-            width: 300px;
-            height: 300px;
         }
     }
 }

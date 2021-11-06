@@ -5,6 +5,8 @@ window.onload = function () {
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
+    // checked();
+    document.querySelector("ul").addEventListener("click", checked);
 };
 
 let list = [];
@@ -101,4 +103,17 @@ function cross() {
         span.appendChild(txt);
         myNodelist[i].appendChild(span);
     }
+}
+
+function checked() {
+    let list = document.querySelector("ul");
+    list.addEventListener(
+        "click",
+        function (e) {
+            if (e.target.tagName === "LI") {
+                e.target.classList.toggle("checked");
+            }
+        },
+        false
+    );
 }
