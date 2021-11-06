@@ -76,6 +76,7 @@ body {
         }
         li.checked {
             text-decoration: line-through;
+            transition: all 1s;
         }
     }
 }

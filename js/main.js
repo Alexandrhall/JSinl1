@@ -65,6 +65,7 @@ function myList() {
     }
     for (let i = 0; i < list.length; i++) {
         let a = document.createElement("li");
+        a.className = "";
         a.innerHTML = list[i].task;
         mylistUl.appendChild(a);
     }
@@ -109,7 +110,7 @@ function checked() {
     let list = document.querySelector("ul");
     list.addEventListener(
         "click",
-        function (e) {
+        (e) => {
             if (e.target.tagName === "LI") {
                 e.target.classList.toggle("checked");
             }
