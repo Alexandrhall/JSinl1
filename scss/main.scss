@@ -13,7 +13,7 @@ body {
 
 #headwrap {
     background-color: rgba(169, 169, 169, 0.5);
-    width: 600px;
+    width: 70vw;
     height: 120px;
     border-radius: 10px;
     margin: 10px;
@@ -42,21 +42,29 @@ body {
 }
 
 #mainwrap {
-    width: 600px;
+    width: 70vw;
     background-color: rgba(169, 169, 169, 0.5);
     border-radius: 10px;
-    height: 250px;
+    height: 100%;
 
     .list {
         li {
             list-style: none;
             cursor: pointer;
         }
-        li:checked {
-            text-transform: underline;
+        li.checked {
+            text-decoration: line-through;
         }
         li:hover {
             background-color: deeppink;
+        }
+        .checkbox:checked {
+            width: 300px;
+            background-color: red;
+        }
+        .checkbox {
+            width: 300px;
+            height: 300px;
         }
     }
 }
