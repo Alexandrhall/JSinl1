@@ -1,6 +1,7 @@
 window.onload = function () {
     createHTML();
     myList();
+    cross();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
@@ -40,6 +41,12 @@ function adinList() {
 
     li.innerHTML = list[list.length - 1].task;
     mylistUl.appendChild(li);
+
+    let span = document.createElement("SPAN");
+    let txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
 }
 
 function myList() {
@@ -82,4 +89,16 @@ class taskList {
 function saveIt() {
     let task = JSON.stringify(list);
     localStorage.setItem("tasks", task);
+}
+
+function cross() {
+    let myNodelist = document.getElementsByTagName("LI");
+    let i;
+    for (i = 0; i < myNodelist.length; i++) {
+        let span = document.createElement("span");
+        let txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        myNodelist[i].appendChild(span);
+    }
 }
