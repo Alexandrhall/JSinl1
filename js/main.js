@@ -2,12 +2,13 @@ window.onload = function () {
     createHTML();
     myList();
     cross();
-    removeIt();
+
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
     document.querySelector("ul").addEventListener("click", checked);
     // document.querySelector("span").addEventListener("click", removeIt);
+    removeIt();
 };
 
 let list = [];
@@ -35,15 +36,15 @@ function adinList() {
     let mylistUl = document.getElementById("myList");
 
     let li = document.createElement("li");
-    let v = document.createTextNode(task);
-    new taskList(task);
+    new taskList(task, "");
 
     if (task == "") {
         alert("Write someting");
+    } else {
+        li.innerHTML = list[list.length - 1].task;
+        li.className = list[list.length - 1].classN;
+        mylistUl.appendChild(li);
     }
-
-    li.innerHTML = list[list.length - 1].task;
-    mylistUl.appendChild(li);
 
     let span = document.createElement("SPAN");
     let txt = document.createTextNode("\u00D7");
@@ -59,14 +60,14 @@ function myList() {
         let listIt = localStorage.getItem("tasks");
         list = JSON.parse(listIt);
     } else {
-        new taskList("Train");
-        new taskList("Make food");
-        new taskList("Have a walk");
-        new taskList("Code");
+        new taskList("Train", "");
+        new taskList("Make food", "");
+        new taskList("Have a walk", "");
+        new taskList("Code", "");
     }
     for (let i = 0; i < list.length; i++) {
         let a = document.createElement("li");
-        a.className = "";
+        a.className = list[i].classN;
         a.innerHTML = list[i].task;
         mylistUl.appendChild(a);
     }
@@ -84,8 +85,9 @@ function blurIt() {
 }
 
 class taskList {
-    constructor(task) {
+    constructor(task, classN) {
         this.task = task;
+        this.classN = classN;
         list.push(this);
     }
 }
@@ -110,20 +112,21 @@ function cross() {
 function checked(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
+
+        list[e.target].classList.classN = "checked";
     }
     false;
 }
 
-function removeIt(e) {
+function removeIt() {
     let close = document.getElementsByClassName("close");
 
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
             let div = this.parentElement;
             // div.style.display = "none";
-            // div.removeChild(list[i]);
-            console.log(div);
-            // list.splice();
+            // list.splice(list[list.length - 1].task);
+            div.remove();
         };
     }
 }
