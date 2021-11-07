@@ -2,11 +2,12 @@ window.onload = function () {
     createHTML();
     myList();
     cross();
+    removeIt();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
-    // checked();
     document.querySelector("ul").addEventListener("click", checked);
+    // document.querySelector("span").addEventListener("click", removeIt);
 };
 
 let list = [];
@@ -106,15 +107,23 @@ function cross() {
     }
 }
 
-function checked() {
-    let list = document.querySelector("ul");
-    list.addEventListener(
-        "click",
-        (e) => {
-            if (e.target.tagName === "LI") {
-                e.target.classList.toggle("checked");
-            }
-        },
-        false
-    );
+function checked(e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+    }
+    false;
+}
+
+function removeIt(e) {
+    let close = document.getElementsByClassName("close");
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            let div = this.parentElement;
+            // div.style.display = "none";
+            // div.removeChild(list[i]);
+            console.log(div);
+            // list.splice();
+        };
+    }
 }
