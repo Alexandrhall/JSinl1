@@ -57,6 +57,11 @@ body {
         display: flex;
         flex-direction: column;
 
+        #sort {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+
         li {
             list-style: none;
             cursor: pointer;

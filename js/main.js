@@ -7,6 +7,7 @@ window.onload = function () {
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
     document.querySelector("ul").addEventListener("click", checked);
+    document.getElementById("sort").addEventListener("click", sortList);
     // document.querySelector("span").addEventListener("click", removeIt);
     removeIt();
 };
@@ -36,7 +37,7 @@ function adinList() {
     let mylistUl = document.getElementById("myList");
 
     let li = document.createElement("li");
-    new taskList(task, "");
+    new taskList(task, "task");
 
     if (task == "") {
         alert("Write someting");
@@ -55,15 +56,19 @@ function adinList() {
 
 function myList() {
     let mylistUl = document.getElementById("myList");
+    let button = document.createElement("button");
+    button.innerHTML = "Sort";
+    button.id = "sort";
+    mylistUl.appendChild(button);
 
     if ("tasks" in localStorage) {
         let listIt = localStorage.getItem("tasks");
         list = JSON.parse(listIt);
     } else {
-        new taskList("Train", "");
-        new taskList("Make food", "");
-        new taskList("Have a walk", "");
-        new taskList("Code", "");
+        new taskList("Train", "task");
+        new taskList("Make food", "task");
+        new taskList("Have a walk", "task");
+        new taskList("Code", "task");
     }
     for (let i = 0; i < list.length; i++) {
         let a = document.createElement("li");
@@ -111,9 +116,15 @@ function cross() {
 
 function checked(e) {
     if (e.target.tagName === "LI") {
+        e.target.classList.toggle("task");
         e.target.classList.toggle("checked");
-
-        list[e.target].classList.classN = "checked";
+        for (let i = 0; i < list.length; i++) {
+            if (list.classN === "checked") {
+                list.classN = "checked";
+            } else {
+                list.classN = "task";
+            }
+        }
     }
     false;
 }
@@ -130,3 +141,23 @@ function removeIt() {
         };
     }
 }
+
+function sortList() {
+    let mylistUl = document.getElementById("myList");
+    for (let i = 0; i < list.length; i++) {
+        let mylistText = list[i].task;
+        console.log(mylistText[i].innerHTML);
+    }
+}
+
+function compare(a, b) {
+    if (a.last_nom < b.last_nom) {
+        return -1;
+    }
+    if (a.last_nom > b.last_nom) {
+        return 1;
+    }
+    return 0;
+}
+
+function sortera() {}
