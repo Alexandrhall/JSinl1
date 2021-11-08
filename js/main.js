@@ -8,7 +8,6 @@ window.onload = function () {
     document.getElementById("saveBut").addEventListener("click", saveIt);
     document.querySelector("ul").addEventListener("click", checked);
     document.getElementById("sort").addEventListener("click", sortList);
-    // document.querySelector("span").addEventListener("click", removeIt);
     removeIt();
 };
 
@@ -100,6 +99,9 @@ class taskList {
 function saveIt() {
     let task = JSON.stringify(list);
     localStorage.setItem("tasks", task);
+    for (let i = 0; i < list.length; i++) {
+        console.log(list[i]);
+    }
 }
 
 function cross() {
@@ -118,46 +120,65 @@ function checked(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("task");
         e.target.classList.toggle("checked");
-        for (let i = 0; i < list.length; i++) {
-            if (list.classN === "checked") {
-                list.classN = "checked";
-            } else {
-                list.classN = "task";
-            }
-        }
+        console.log(e.target.className);
+        list.classN = "checked";
+
+        // for (let i = 0; i < list.length; i++) {
+        //     if (list[e.target].classN === "checked") {
+        //         list[e.target].classN = "checked";
+        //     } else {
+        //         list[e.target].classN = "task";
+        //     }
+        // }
     }
     false;
 }
 
 function removeIt() {
     let close = document.getElementsByClassName("close");
+    let i;
 
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
             let div = this.parentElement;
             // div.style.display = "none";
-            // list.splice(list[list.length - 1].task);
             div.remove();
         };
     }
+    list.splice();
 }
 
 function sortList() {
-    let mylistUl = document.getElementById("myList");
-    for (let i = 0; i < list.length; i++) {
-        let mylistText = list[i].task;
-        console.log(mylistText[i].innerHTML);
+    let list, i, switching, b, shouldSwitch;
+    list = document.getElementById("myList");
+    switching = true;
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+        // start by saying: no switching is done:
+        switching = false;
+        b = list.getElementsByTagName("LI");
+        // Loop through all list-items:
+        for (i = 0; i < b.length - 1; i++) {
+            // start by saying there should be no switching:
+            shouldSwitch = false;
+            /* check if the next item should
+        switch place with the current item: */
+            if (
+                b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()
+            ) {
+                /* if next item is alphabetically
+          lower than current item, mark as a switch
+          and break the loop: */
+                shouldSwitch = true;
+                break;
+            }
+        }
+        if (shouldSwitch) {
+            /* If a switch has been marked, make the switch
+        and mark the switch as done: */
+            b[i].parentNode.insertBefore(b[i + 1], b[i]);
+            switching = true;
+        }
     }
 }
-
-function compare(a, b) {
-    if (a.last_nom < b.last_nom) {
-        return -1;
-    }
-    if (a.last_nom > b.last_nom) {
-        return 1;
-    }
-    return 0;
-}
-
-function sortera() {}
