@@ -2,13 +2,12 @@ window.onload = function () {
     createHTML();
     myList();
     cross();
-
+    removeIt();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
     document.querySelector("ul").addEventListener("click", checked);
     document.getElementById("sort").addEventListener("click", sortList);
-    removeIt();
 };
 
 let list = [];
@@ -51,12 +50,13 @@ function adinList() {
     span.className = "close";
     span.appendChild(txt);
     li.appendChild(span);
+    removeIt();
 }
 
 function myList() {
     let mylistUl = document.getElementById("myList");
     let button = document.createElement("button");
-    button.innerHTML = "Sort";
+    button.innerHTML = "Sort name";
     button.id = "sort";
     mylistUl.appendChild(button);
 
@@ -120,7 +120,9 @@ function checked(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("task");
         e.target.classList.toggle("checked");
+        e.target.classList.toggle("marked");
         console.log(e.target.className);
+
         list.classN = "checked";
 
         // for (let i = 0; i < list.length; i++) {
@@ -136,16 +138,12 @@ function checked(e) {
 
 function removeIt() {
     let close = document.getElementsByClassName("close");
-    let i;
 
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
-            let div = this.parentElement;
-            // div.style.display = "none";
-            div.remove();
+            this.parentElement.remove();
         };
     }
-    list.splice();
 }
 
 function sortList() {

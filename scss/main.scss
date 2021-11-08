@@ -19,25 +19,46 @@ body {
     margin: 10px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 33% 33% 33%;
+    padding: 5px;
     h2 {
         grid-column-start: 2;
         grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
         justify-self: center;
         font-size: 2rem;
     }
     #inp {
-        grid-row-start: 2;
+        grid-row-start: 3;
         grid-column-start: 1;
-        grid-column-end: 3;
+        grid-column-end: 2;
         font-size: 1.2rem;
+        border-radius: 10px;
+        border-style: none;
+        margin: 2px;
     }
     #button {
-        grid-row-start: 2;
-        grid-column-start: 3;
+        margin-left: 5px;
     }
     #saveBut {
-        grid-row-start: 2;
-        grid-column-start: 4;
+        justify-self: right;
+    }
+    button {
+        width: 48%;
+        grid-row-start: 3;
+        grid-column-start: 2;
+        border-style: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px rgb(35, 63, 63);
+    }
+    #button:hover {
+        background-color: darkslategrey;
+        transition: all 0.1s;
+    }
+    #saveBut:hover {
+        background-color: darkslategrey;
+        transition: all 0.1s;
     }
 }
 
@@ -50,7 +71,7 @@ body {
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 50% 50%;
 
-    .list {
+    #myList {
         margin: 0 auto;
         padding: 10px 0px 10px 0px;
         width: 75%;
@@ -58,12 +79,16 @@ body {
         flex-direction: column;
 
         #sort {
-            width: 50px;
+            width: 120px;
             margin-bottom: 10px;
+            background-color: rgba(169, 169, 169, 0);
+            border-style: none;
         }
 
         li {
             list-style: none;
+            border-radius: 10px;
+            padding: 2px;
             cursor: pointer;
             padding: 5px;
             width: 150px;
@@ -83,6 +108,10 @@ body {
         }
         li.checked {
             text-decoration: line-through;
+        }
+        .marked {
+            position: absolute;
+            left: 60%;
         }
     }
 }
