@@ -144,7 +144,7 @@ function removeIt(i) {
     myList();
 }
 
-function sortList() {
+function sortList1() {
     let list, i, switching, b, shouldSwitch;
     list = document.getElementById("myList");
     switching = true;
@@ -178,3 +178,21 @@ function sortList() {
         }
     }
 }
+
+// array.sort(function (a, b) {
+//     // Turn your strings into dates, and then subtract them
+//     // to get a value that is either negative, positive, or zero.
+//     return new Date(b.date) - new Date(a.date);
+// });
+
+// array.sort(function (o1, o2) {
+//     if (sort_o1_before_o2) return -1;
+//     else if (sort_o1_after_o2) return 1;
+//     else return 0;
+// });
+
+// function sortList(o1, o2) {
+//     if (sort_o1_before_o2) return -1;
+//     else if (sort_o1_after_o2) return 1;
+//     else return 0;
+// }
