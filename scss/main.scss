@@ -67,9 +67,11 @@ body {
     background-color: rgba(169, 169, 169, 0.5);
     border-radius: 10px;
     height: 100%;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 50% 50%;
+    // display: grid;
+    // grid-template-columns: 33% 33% 33%;
+    // grid-template-rows: 33% 33% 33%;
+    display: flex;
+    flex-direction: column-reverse;
 
     #myList {
         margin: 0 auto;
@@ -77,6 +79,8 @@ body {
         width: 75%;
         display: flex;
         flex-direction: column;
+        grid-column-start: 1;
+        grid-column-end: 4;
 
         #sort {
             width: 120px;
@@ -114,16 +118,20 @@ body {
         }
         li.checked {
             text-decoration: line-through;
-            position: absolute;
+            justify-content: right;
+            align-items: right;
             left: 60%;
         }
     }
     button {
-        width: 48%;
-        height: 50px;
+        height: 37px;
         border-style: none;
         border-radius: 10px;
         box-shadow: 1px 1px 1px rgb(35, 63, 63);
+        grid-row: 1;
+        margin-left: 30px;
+        width: 100px;
+        margin-top: 10px;
     }
     button:hover {
         background-color: darkslategrey;

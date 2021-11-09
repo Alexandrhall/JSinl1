@@ -16,6 +16,7 @@ window.onload = function () {
         e.preventDefault();
         if (e.keyCode === 13) {
             adinList().click;
+            blurIt().click;
         }
     });
 };
@@ -33,7 +34,7 @@ if ("tasks" in localStorage) {
 
 function createHTML() {
     let input = document.createElement("input");
-    input.className = "input";
+    input.className = "input" + " form-control";
     input.placeholder = "Write new..";
     input.type = "text";
     input.id = "inp";
