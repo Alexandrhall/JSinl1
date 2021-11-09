@@ -1,7 +1,9 @@
 class taskList {
     constructor(task, classN) {
+        let date = new Date();
         this.task = task;
         this.classN = classN;
+        this.date = date;
         list.push(this);
     }
 }
