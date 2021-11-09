@@ -93,6 +93,8 @@ body {
             padding: 5px;
             width: 150px;
             transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
             .close {
                 float: right;
                 font-size: 1.2rem;
@@ -101,6 +103,10 @@ body {
                 background-color: salmon;
                 border-radius: 30%;
             }
+            p {
+                flex-grow: 1;
+                margin: 0;
+            }
         }
         li:hover {
             background-color: wheat;
@@ -108,10 +114,19 @@ body {
         }
         li.checked {
             text-decoration: line-through;
-        }
-        .marked {
             position: absolute;
             left: 60%;
         }
+    }
+    button {
+        width: 48%;
+        height: 50px;
+        border-style: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px rgb(35, 63, 63);
+    }
+    button:hover {
+        background-color: darkslategrey;
+        transition: all 0.1s;
     }
 }

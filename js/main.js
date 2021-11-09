@@ -1,16 +1,35 @@
+class taskList {
+    constructor(task, classN) {
+        this.task = task;
+        this.classN = classN;
+        list.push(this);
+    }
+}
+
 window.onload = function () {
     createHTML();
-    myList();
-    cross();
-    removeIt();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
-    document.querySelector("ul").addEventListener("click", checked);
     document.getElementById("sort").addEventListener("click", sortList);
+    document.getElementById("inp").addEventListener("keyup", (e) => {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+            adinList().click;
+        }
+    });
 };
 
 let list = [];
+if ("tasks" in localStorage) {
+    let listIt = localStorage.getItem("tasks");
+    list = JSON.parse(listIt);
+} else {
+    new taskList("Train", "task");
+    new taskList("Make food", "task");
+    new taskList("Have a walk", "task");
+    new taskList("Code", "task");
+}
 
 function createHTML() {
     let input = document.createElement("input");
@@ -24,10 +43,16 @@ function createHTML() {
     button.innerHTML = "Add";
     button.id = "button";
     headwrap.appendChild(button);
+    let sortIt = document.createElement("button");
+    let mainwrap = document.getElementById("mainwrap");
+    sortIt.innerHTML = "Sort name";
+    sortIt.id = "sort";
+    mainwrap.appendChild(sortIt);
     let saveBut = document.createElement("button");
     saveBut.innerHTML = "Save";
     saveBut.id = "saveBut";
     headwrap.appendChild(saveBut);
+    myList();
 }
 
 function adinList() {
@@ -44,36 +69,36 @@ function adinList() {
         li.className = list[list.length - 1].classN;
         mylistUl.appendChild(li);
     }
-
-    let span = document.createElement("SPAN");
-    let txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-    removeIt();
+    myList();
 }
 
 function myList() {
     let mylistUl = document.getElementById("myList");
-    let button = document.createElement("button");
-    button.innerHTML = "Sort name";
-    button.id = "sort";
-    mylistUl.appendChild(button);
 
-    if ("tasks" in localStorage) {
-        let listIt = localStorage.getItem("tasks");
-        list = JSON.parse(listIt);
-    } else {
-        new taskList("Train", "task");
-        new taskList("Make food", "task");
-        new taskList("Have a walk", "task");
-        new taskList("Code", "task");
-    }
+    mylistUl.innerHTML = "";
+
     for (let i = 0; i < list.length; i++) {
-        let a = document.createElement("li");
-        a.className = list[i].classN;
-        a.innerHTML = list[i].task;
-        mylistUl.appendChild(a);
+        let li = document.createElement("li");
+        let p = document.createElement("p");
+        li.className = list[i].classN;
+        p.innerHTML = list[i].task;
+        li.appendChild(p);
+
+        let span = document.createElement("span");
+        let txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+
+        span.addEventListener("click", () => {
+            removeIt(i);
+        });
+
+        mylistUl.appendChild(li);
+
+        p.addEventListener("click", () => {
+            checked(i);
+        });
     }
 }
 
@@ -88,14 +113,6 @@ function blurIt() {
     }, 300);
 }
 
-class taskList {
-    constructor(task, classN) {
-        this.task = task;
-        this.classN = classN;
-        list.push(this);
-    }
-}
-
 function saveIt() {
     let task = JSON.stringify(list);
     localStorage.setItem("tasks", task);
@@ -104,46 +121,24 @@ function saveIt() {
     }
 }
 
-function cross() {
-    let myNodelist = document.getElementsByTagName("LI");
-    let i;
-    for (i = 0; i < myNodelist.length; i++) {
-        let span = document.createElement("span");
-        let txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        myNodelist[i].appendChild(span);
-    }
-}
-
-function checked(e) {
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("task");
-        e.target.classList.toggle("checked");
-        e.target.classList.toggle("marked");
-        console.log(e.target.className);
-
-        list.classN = "checked";
-
-        // for (let i = 0; i < list.length; i++) {
-        //     if (list[e.target].classN === "checked") {
-        //         list[e.target].classN = "checked";
-        //     } else {
-        //         list[e.target].classN = "task";
-        //     }
-        // }
-    }
-    false;
-}
-
-function removeIt() {
-    let close = document.getElementsByClassName("close");
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function () {
-            this.parentElement.remove();
+function checked(i) {
+    if (list[i].classN === "task") {
+        list[i] = {
+            task: list[i].task,
+            classN: "checked",
+        };
+    } else {
+        list[i] = {
+            task: list[i].task,
+            classN: "task",
         };
     }
+    myList();
+}
+
+function removeIt(i) {
+    list.splice(i, 1);
+    myList();
 }
 
 function sortList() {
