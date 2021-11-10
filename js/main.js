@@ -85,8 +85,10 @@ function adinList() {
 
 function myList() {
     let mylistUl = document.getElementById("myList");
+    let doneListUl = document.getElementById("doneList");
 
     mylistUl.innerHTML = "";
+    doneListUl.innerHTML = "";
 
     for (let i = 0; i < list.length; i++) {
         let li = document.createElement("li");
@@ -105,7 +107,11 @@ function myList() {
             removeIt(i);
         });
 
-        mylistUl.appendChild(li);
+        if (list[i].classN === "task") {
+            mylistUl.appendChild(li);
+        } else {
+            doneListUl.append(li);
+        }
 
         p.addEventListener("click", () => {
             checked(i);
