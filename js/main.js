@@ -12,14 +12,13 @@ window.onload = function () {
     createHTML();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
-    document.getElementById("saveBut").addEventListener("click", saveIt);
+    // document.getElementById("saveBut").addEventListener("click", saveIt);
     document.getElementById("sort").addEventListener("click", sortList);
     document.getElementById("dateSort").addEventListener("click", dateList);
     document.getElementById("inp").addEventListener("keyup", (e) => {
         e.preventDefault();
         if (e.keyCode === 13) {
-            adinList().click;
-            blurIt().click;
+            adinList();
         }
     });
 };
@@ -33,6 +32,7 @@ if ("tasks" in localStorage) {
     new taskList("Make food", "task");
     new taskList("Have a walk", "task");
     new taskList("Code", "task");
+    saveIt();
 }
 
 function createHTML() {
@@ -59,10 +59,10 @@ function createHTML() {
     mainwrap.appendChild(div1);
     div1.appendChild(sortIt);
     div1.appendChild(dateIt);
-    let saveBut = document.createElement("button");
-    saveBut.innerHTML = "Save";
-    saveBut.id = "saveBut";
-    headwrap.appendChild(saveBut);
+    // let saveBut = document.createElement("button");
+    // saveBut.innerHTML = "Save";
+    // saveBut.id = "saveBut";
+    // headwrap.appendChild(saveBut);
     myList();
 }
 
@@ -79,6 +79,7 @@ function adinList() {
         li.innerHTML = list[list.length - 1].task;
         li.className = list[list.length - 1].classN;
         mylistUl.appendChild(li);
+        saveIt();
     }
     myList();
 }
@@ -143,18 +144,22 @@ function checked(i) {
         list[i] = {
             task: list[i].task,
             classN: "checked",
+            date: list[i].date,
         };
     } else {
         list[i] = {
             task: list[i].task,
             classN: "task",
+            date: list[i].date,
         };
     }
+    saveIt();
     myList();
 }
 
 function removeIt(i) {
     list.splice(i, 1);
+    saveIt();
     myList();
 }
 
