@@ -73,16 +73,26 @@ button {
     border-radius: 10px;
     height: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+    row-gap: 50px;
+    padding: 20px;
 
-    #myList {
+    div {
+        width: 40%;
+        flex-grow: 1;
+
+        h4 {
+            width: 100px;
+            margin: 0 auto;
+        }
+    }
+
+    .list {
         margin: 0 auto;
         padding: 10px 0px 10px 0px;
         width: 75%;
         display: flex;
         flex-direction: column;
-        grid-column-start: 1;
-        grid-column-end: 4;
 
         #sort {
             width: 120px;
@@ -115,7 +125,6 @@ button {
             }
         }
         li:hover {
-            // background-color: wheat;
             background-color: wheat;
             border-radius: 10px;
         }
