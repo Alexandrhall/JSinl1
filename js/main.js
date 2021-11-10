@@ -14,6 +14,7 @@ window.onload = function () {
     document.getElementById("inp").addEventListener("blur", blurIt);
     document.getElementById("saveBut").addEventListener("click", saveIt);
     document.getElementById("sort").addEventListener("click", sortList);
+    document.getElementById("dateSort").addEventListener("click", dateList);
     document.getElementById("inp").addEventListener("keyup", (e) => {
         e.preventDefault();
         if (e.keyCode === 13) {
@@ -47,10 +48,17 @@ function createHTML() {
     button.id = "button";
     headwrap.appendChild(button);
     let sortIt = document.createElement("button");
+    let dateIt = document.createElement("button");
     let mainwrap = document.getElementById("mainwrap");
+    let div1 = document.createElement("div");
     sortIt.innerHTML = "Sort name";
     sortIt.id = "sort";
-    mainwrap.appendChild(sortIt);
+    dateIt.innerHTML = "Sort Date";
+    dateIt.id = "dateSort";
+    div1.className = "butWrap";
+    mainwrap.appendChild(div1);
+    div1.appendChild(sortIt);
+    div1.appendChild(dateIt);
     let saveBut = document.createElement("button");
     saveBut.innerHTML = "Save";
     saveBut.id = "saveBut";
@@ -63,11 +71,11 @@ function adinList() {
     let mylistUl = document.getElementById("myList");
 
     let li = document.createElement("li");
-    new taskList(task, "task");
 
     if (task == "") {
         alert("Write someting");
     } else {
+        new taskList(task, "task");
         li.innerHTML = list[list.length - 1].task;
         li.className = list[list.length - 1].classN;
         mylistUl.appendChild(li);
@@ -145,54 +153,31 @@ function removeIt(i) {
 }
 
 function sortList() {
-    let list, i, switching, b, shouldSwitch;
-    list = document.getElementById("myList");
-    switching = true;
-    /* Make a loop that will continue until
-    no switching has been done: */
-    while (switching) {
-        // start by saying: no switching is done:
-        switching = false;
-        b = list.getElementsByTagName("LI");
-        // Loop through all list-items:
-        for (i = 0; i < b.length - 1; i++) {
-            // start by saying there should be no switching:
-            shouldSwitch = false;
-            /* check if the next item should
-        switch place with the current item: */
-            if (
-                b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()
-            ) {
-                /* if next item is alphabetically
-          lower than current item, mark as a switch
-          and break the loop: */
-                shouldSwitch = true;
-                break;
-            }
+    list.sort(function (a, b) {
+        let nameA = a.task.toUpperCase();
+        let nameB = b.task.toUpperCase();
+        if (nameA < nameB) {
+            return -1;
         }
-        if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-        and mark the switch as done: */
-            b[i].parentNode.insertBefore(b[i + 1], b[i]);
-            switching = true;
+        if (nameA > nameB) {
+            return 1;
         }
-    }
+        return 0;
+    });
+    myList();
 }
 
-// array.sort(function (a, b) {
-//     // Turn your strings into dates, and then subtract them
-//     // to get a value that is either negative, positive, or zero.
-//     return new Date(b.date) - new Date(a.date);
-// });
-
-// array.sort(function (o1, o2) {
-//     if (sort_o1_before_o2) return -1;
-//     else if (sort_o1_after_o2) return 1;
-//     else return 0;
-// });
-
-// function sortList(o1, o2) {
-//     if (sort_o1_before_o2) return -1;
-//     else if (sort_o1_after_o2) return 1;
-//     else return 0;
-// }
+function dateList() {
+    list.sort(function (a, b) {
+        let nameA = a.date;
+        let nameB = b.date;
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+    myList();
+}
