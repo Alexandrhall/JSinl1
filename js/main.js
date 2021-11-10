@@ -144,7 +144,7 @@ function removeIt(i) {
     myList();
 }
 
-function sortList1() {
+function sortList() {
     let list, i, switching, b, shouldSwitch;
     list = document.getElementById("myList");
     switching = true;
