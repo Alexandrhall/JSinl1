@@ -4,15 +4,16 @@ html {
 }
 
 body {
-    background-color: rgba(68, 68, 68);
-    color: orange;
+    background-color: black;
+    color: darkorange;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 button {
-    background-color: wheat;
+    background-color: black;
+    color: darkorange;
 }
 
 #headwrap {
@@ -21,50 +22,45 @@ button {
     height: 120px;
     border-radius: 10px;
     margin: 10px;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 33% 33% 33%;
+    display: flex;
+    flex-wrap: wrap;
     padding: 5px;
+    row-gap: 30px;
     h2 {
-        grid-column-start: 2;
-        grid-column-end: 4;
-        grid-row-start: 1;
-        grid-row-end: 3;
-        justify-self: center;
+        text-align: center;
         font-size: 2rem;
+        width: 100%;
+        margin: 0 auto;
     }
     #inp {
-        grid-row-start: 3;
-        grid-column-start: 1;
-        grid-column-end: 2;
         font-size: 1.2rem;
         border-radius: 10px;
         border-style: none;
         margin: 2px;
-        background-color: wheat;
+        background-color: black;
+        color: darkorange;
+        width: 40%;
+        height: 35px;
+        max-width: 225px;
+        min-width: 135px;
     }
     #button {
         margin-left: 5px;
     }
-    #saveBut {
-        justify-self: right;
-    }
     button {
-        width: 48%;
-        grid-row-start: 3;
-        grid-column-start: 2;
         border-style: none;
         border-radius: 10px;
         box-shadow: 1px 1px 1px rgb(35, 63, 63);
+        height: 35px;
+        width: 20%;
+        margin-top: 2px;
+        max-width: 80px;
     }
-    #button:hover {
-        background-color: darkslategrey;
-        transition: all 0.1s;
-    }
-    #saveBut:hover {
-        background-color: darkslategrey;
-        transition: all 0.1s;
-    }
+}
+
+button:hover {
+    background-color: chartreuse;
+    transition: all 0.2s;
 }
 
 #mainwrap {
@@ -73,13 +69,18 @@ button {
     border-radius: 10px;
     height: 100%;
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-direction: column;
     row-gap: 50px;
     padding: 20px;
 
-    div {
-        width: 40%;
+    .butWrap {
+        width: 100%;
         flex-grow: 1;
+    }
+
+    div {
+        width: 50%;
+        margin: 0 auto;
 
         h4 {
             width: 100px;
@@ -91,7 +92,6 @@ button {
         margin: 0 auto;
         padding: 10px 0px 10px 0px;
         width: 75%;
-        display: flex;
         flex-direction: column;
 
         #sort {
@@ -134,23 +134,24 @@ button {
         }
     }
     button {
-        height: 37px;
+        height: 25px;
+        width: 100px;
         border-style: none;
         border-radius: 10px;
         box-shadow: 1px 1px 1px rgb(35, 63, 63);
-        grid-row: 1;
-        margin-left: 30px;
-        width: 100px;
-        margin-top: 10px;
-    }
-    button:hover {
-        background-color: darkslategrey;
-        transition: all 0.1s;
     }
 }
 
-@media screen and(min-width:501px) {
-    body {
-        background-color: black;
+@media screen and(min-width:768px) {
+    #mainwrap {
+        flex-direction: initial;
+        flex-wrap: wrap;
+        width: 70vw;
+        max-width: 800px;
+    }
+
+    #headwrap {
+        width: 70vw;
+        max-width: 800px;
     }
 }

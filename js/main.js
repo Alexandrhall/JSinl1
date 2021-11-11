@@ -12,7 +12,6 @@ window.onload = function () {
     createHTML();
     document.getElementById("button").addEventListener("click", adinList);
     document.getElementById("inp").addEventListener("blur", blurIt);
-    // document.getElementById("saveBut").addEventListener("click", saveIt);
     document.getElementById("sort").addEventListener("click", sortList);
     document.getElementById("dateSort").addEventListener("click", dateList);
     document.getElementById("inp").addEventListener("keyup", (e) => {
@@ -47,22 +46,6 @@ function createHTML() {
     button.innerHTML = "Add";
     button.id = "button";
     headwrap.appendChild(button);
-    let sortIt = document.createElement("button");
-    let dateIt = document.createElement("button");
-    let mainwrap = document.getElementById("mainwrap");
-    let div1 = document.createElement("div");
-    sortIt.innerHTML = "Sort name";
-    sortIt.id = "sort";
-    dateIt.innerHTML = "Sort Date";
-    dateIt.id = "dateSort";
-    div1.className = "butWrap";
-    mainwrap.appendChild(div1);
-    div1.appendChild(sortIt);
-    div1.appendChild(dateIt);
-    // let saveBut = document.createElement("button");
-    // saveBut.innerHTML = "Save";
-    // saveBut.id = "saveBut";
-    // headwrap.appendChild(saveBut);
     myList();
 }
 
@@ -134,9 +117,6 @@ function blurIt() {
 function saveIt() {
     let task = JSON.stringify(list);
     localStorage.setItem("tasks", task);
-    for (let i = 0; i < list.length; i++) {
-        console.log(list[i]);
-    }
 }
 
 function checked(i) {
