@@ -16,6 +16,11 @@ button {
     color: darkorange;
 }
 
+button:hover {
+    background-color: chartreuse;
+    transition: all 0.2s;
+}
+
 #headwrap {
     background-color: rgba(169, 169, 169, 0.5);
     width: 70vw;
@@ -56,11 +61,6 @@ button {
         margin-top: 2px;
         max-width: 80px;
     }
-}
-
-button:hover {
-    background-color: chartreuse;
-    transition: all 0.2s;
 }
 
 #mainwrap {
