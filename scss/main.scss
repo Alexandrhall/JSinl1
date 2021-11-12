@@ -1,3 +1,5 @@
+$backcol: rgba(169, 169, 169, 0.2);
+
 html {
     font-size: 12pt;
     font-family: sans-serif;
@@ -23,7 +25,7 @@ button:hover {
 }
 
 #headwrap {
-    background-color: rgba(169, 169, 169, 0.2);
+    background-color: $backcol;
     width: 70vw;
     height: 120px;
     border-radius: 10px;
@@ -50,15 +52,13 @@ button:hover {
         max-width: 225px;
         min-width: 135px;
     }
-    #button {
-        margin-left: 5px;
-    }
     button {
         border-style: none;
         border-radius: 10px;
-        box-shadow: 1px 1px 1px rgb(35, 63, 63);
+        box-shadow: 1px 1px 1px $backcol;
         height: 35px;
         width: 20%;
+        margin-left: 5px;
         margin-top: 2px;
         max-width: 80px;
     }
@@ -66,7 +66,7 @@ button:hover {
 
 #mainwrap {
     width: 70vw;
-    background-color: rgba(169, 169, 169, 0.2);
+    background-color: $backcol;
     border-radius: 10px;
     height: 100%;
     display: flex;
@@ -139,7 +139,7 @@ button:hover {
         width: 100px;
         border-style: none;
         border-radius: 10px;
-        box-shadow: 1px 1px 1px rgb(35, 63, 63);
+        box-shadow: 1px 1px 1px $backcol;
     }
 }
 
