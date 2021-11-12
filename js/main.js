@@ -1,10 +1,9 @@
 class taskList {
     constructor(task, classN) {
-        let date = new Date();
+        let date = new Date().toISOString();
         this.task = task;
         this.classN = classN;
         this.date = date;
-        list.push(this);
     }
 }
 
@@ -27,10 +26,11 @@ if ("tasks" in localStorage) {
     let listIt = localStorage.getItem("tasks");
     list = JSON.parse(listIt);
 } else {
-    new taskList("Train", "task");
-    new taskList("Make food", "task");
-    new taskList("Have a walk", "task");
-    new taskList("Code", "task");
+    let task1 = new taskList("Train", "task");
+    let task2 = new taskList("Make food", "task");
+    let task3 = new taskList("Have a walk", "task");
+    let task4 = new taskList("Code", "task");
+    list.push(task1, task2, task3, task4);
     saveIt();
 }
 
@@ -58,7 +58,8 @@ function adinList() {
     if (task == "") {
         alert("Write someting");
     } else {
-        new taskList(task, "task");
+        let taskIt = new taskList(task, "task");
+        list.push(taskIt);
         li.innerHTML = list[list.length - 1].task;
         li.className = list[list.length - 1].classN;
         mylistUl.appendChild(li);
