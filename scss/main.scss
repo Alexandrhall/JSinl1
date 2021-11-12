@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.904);
     color: darkorange;
     display: flex;
     flex-direction: column;
@@ -18,11 +18,12 @@ button {
 
 button:hover {
     background-color: chartreuse;
+    color: black;
     transition: all 0.2s;
 }
 
 #headwrap {
-    background-color: rgba(169, 169, 169, 0.5);
+    background-color: rgba(169, 169, 169, 0.2);
     width: 70vw;
     height: 120px;
     border-radius: 10px;
@@ -65,7 +66,7 @@ button:hover {
 
 #mainwrap {
     width: 70vw;
-    background-color: rgba(169, 169, 169, 0.5);
+    background-color: rgba(169, 169, 169, 0.2);
     border-radius: 10px;
     height: 100%;
     display: flex;
